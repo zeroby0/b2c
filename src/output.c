@@ -21,97 +21,57 @@ void execute() {
 int PC = 0;
 
 main:
-    PC++;
-    memory[PC] = memory[PC] + 9;
+    memory[PC]++;
     
 loop1: if(!memory[PC]) goto endloop1;
-    PC--;
-    memory[PC] = memory[PC] + 8;
-    PC++;
     memory[PC]--;
-    endloop1: if(!memory[PC]) goto loop1;
-
-    PC--;
-    putchar(memory[PC]);
-    PC++;
-    memory[PC] = memory[PC] + 7;
     
 loop2: if(!memory[PC]) goto endloop2;
-    PC--;
-    memory[PC] = memory[PC] + 4;
-    PC++;
-    memory[PC]--;
-    endloop2: if(!memory[PC]) goto loop2;
-
-    PC--;
-    memory[PC]++;
-    putchar(memory[PC]);
-    memory[PC] = memory[PC] + 7;
-    putchar(memory[PC]);putchar(memory[PC]);
-    memory[PC] = memory[PC] + 3;
-    putchar(memory[PC]);
+    PC = PC - 2;
     
 loop3: if(!memory[PC]) goto endloop3;
-    memory[PC]--;
-    endloop3: if(!memory[PC]) goto loop3;
-
-    PC++;
-    memory[PC] = memory[PC] + 8;
+    memory[PC]++;
     
 loop4: if(!memory[PC]) goto endloop4;
-    PC--;
-    memory[PC] = memory[PC] + 4;
+    memory[PC] = memory[PC] - 3;
     PC++;
-    memory[PC]--;
-    endloop4: if(!memory[PC]) goto loop4;
+    endloop4: if(memory[PC]) goto loop4;
 
-    PC--;
-    putchar(memory[PC]);
-    PC++;
-    memory[PC] = memory[PC] + 11;
+    memory[PC]--;
     
 loop5: if(!memory[PC]) goto endloop5;
-    PC--;
-    memory[PC] = memory[PC] + 8;
-    PC++;
-    memory[PC]--;
-    endloop5: if(!memory[PC]) goto loop5;
+    PC = PC - 3;
+    endloop3: if(memory[PC]) goto loop3;
+endloop4: if(memory[PC]) goto loop4;
+endloop5: if(memory[PC]) goto loop5;
 
-    PC--;
+    PC = PC + 3;
     memory[PC]--;
-    putchar(memory[PC]);
-    memory[PC] = memory[PC] - 8;
-    putchar(memory[PC]);
-    memory[PC] = memory[PC] + 3;
-    putchar(memory[PC]);
-    memory[PC] = memory[PC] - 6;
-    putchar(memory[PC]);
-    memory[PC] = memory[PC] - 8;
-    putchar(memory[PC]);
-    
-loop6: if(!memory[PC]) goto endloop6;
-    memory[PC]--;
-    endloop6: if(!memory[PC]) goto loop6;
+    endloop5: if(memory[PC]) goto loop5;
 
     PC++;
-    memory[PC] = memory[PC] + 8;
-    
-loop7: if(!memory[PC]) goto endloop7;
-    PC--;
-    memory[PC] = memory[PC] + 4;
-    PC++;
     memory[PC]--;
-    endloop7: if(!memory[PC]) goto loop7;
-
+    putchar(memory[PC]);
+    memory[PC] = memory[PC] - 3;
+    putchar(memory[PC]);
+    PC++;
+    putchar(memory[PC]);putchar(memory[PC]);
+    PC++;
+    putchar(memory[PC]);
+    PC = PC - 4;
+    memory[PC]--;
+    putchar(memory[PC]);
     PC--;
     memory[PC]++;
     putchar(memory[PC]);
-    
-loop8: if(!memory[PC]) goto endloop8;
+    PC = PC + 5;
+    putchar(memory[PC]);
+    PC++;
+    putchar(memory[PC]);
+    PC = PC - 2;
+    putchar(memory[PC]);
+    PC--;
     memory[PC]--;
-    endloop8: if(!memory[PC]) goto loop8;
-
-    memory[PC] = memory[PC] + 10;
     putchar(memory[PC]);
 
 }

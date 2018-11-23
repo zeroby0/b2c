@@ -62,7 +62,7 @@ def action_startLoop(token):
 def action_endLoop(token):
 	# good luck
 	global gotoCounter
-	return ''.join(['endloop' + str(gotoCounter - i) + ': if(!memory[PC]) goto loop' + str(gotoCounter - i) + ';\n' for i in reversed(range(token[1]))])
+	return ''.join(['endloop' + str(gotoCounter - i) + ': if(memory[PC]) goto loop' + str(gotoCounter - i) + ';\n' for i in reversed(range(token[1]))])
 
 actions = { '>': action_moveRight, 
 			'<': action_moveLeft,
