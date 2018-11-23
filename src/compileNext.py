@@ -5,6 +5,7 @@
 import sys
 
 gotoCounter = 0
+gotoStack = []
 
 def tokenize(source):
 	previousSymbol = source[0]
@@ -55,14 +56,21 @@ def action_getchar(token):
 
 def action_startLoop(token):
 	# good luck
-	global gotoCounter
+	global gotoCounter, gotoStack
+
 	gotoCounter = gotoCounter + token[1]
+
+	gotoStack = gotoStack + [gotoCounter - i for i in range(token[1])]
+
 	return ''.join(['\nloop' + str(gotoCounter - i) + ': if(!memory[PC]) goto endloop' + str(gotoCounter - i) + ';' for i in reversed(range(token[1]))])
+
+
 
 def action_endLoop(token):
 	# good luck
-	global gotoCounter
-	return ''.join(['endloop' + str(gotoCounter - i) + ': if(memory[PC]) goto loop' + str(gotoCounter - i) + ';\n' for i in reversed(range(token[1]))])
+	global gotoCounter, gotoStack
+
+	return ''.join(['endloop' + str(gotoStack[-1]) + ': if(memory[PC]) goto loop' + str(gotoStack.pop()) + ';\n' for i in reversed(range(token[1]))])
 
 actions = { '>': action_moveRight, 
 			'<': action_moveLeft,

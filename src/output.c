@@ -41,13 +41,13 @@ loop4: if(!memory[PC]) goto endloop4;
     
 loop5: if(!memory[PC]) goto endloop5;
     PC = PC - 3;
-    endloop3: if(memory[PC]) goto loop3;
-endloop4: if(memory[PC]) goto loop4;
-endloop5: if(memory[PC]) goto loop5;
+    endloop5: if(memory[PC]) goto loop5;
+endloop3: if(memory[PC]) goto loop3;
+endloop2: if(memory[PC]) goto loop2;
 
     PC = PC + 3;
     memory[PC]--;
-    endloop5: if(memory[PC]) goto loop5;
+    endloop1: if(memory[PC]) goto loop1;
 
     PC++;
     memory[PC]--;
