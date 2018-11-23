@@ -18,60 +18,9 @@ int main() {
 }
 
 void execute() {
-int PC = 0;
-
-main:
-    memory[PC]++;
     
-loop1: if(!memory[PC]) goto endloop1;
-    memory[PC]--;
+    int PC = 0;
     
-loop2: if(!memory[PC]) goto endloop2;
-    PC = PC - 2;
-    
-loop3: if(!memory[PC]) goto endloop3;
-    memory[PC]++;
-    
-loop4: if(!memory[PC]) goto endloop4;
-    memory[PC] = memory[PC] - 3;
-    PC++;
-    endloop4: if(memory[PC]) goto loop4;
-
-    memory[PC]--;
-    
-loop5: if(!memory[PC]) goto endloop5;
-    PC = PC - 3;
-    endloop5: if(memory[PC]) goto loop5;
-endloop3: if(memory[PC]) goto loop3;
-endloop2: if(memory[PC]) goto loop2;
-
-    PC = PC + 3;
-    memory[PC]--;
-    endloop1: if(memory[PC]) goto loop1;
-
-    PC++;
-    memory[PC]--;
-    putchar(memory[PC]);
-    memory[PC] = memory[PC] - 3;
-    putchar(memory[PC]);
-    PC++;
-    putchar(memory[PC]);putchar(memory[PC]);
-    PC++;
-    putchar(memory[PC]);
-    PC = PC - 4;
-    memory[PC]--;
-    putchar(memory[PC]);
-    PC--;
-    memory[PC]++;
-    putchar(memory[PC]);
-    PC = PC + 5;
-    putchar(memory[PC]);
-    PC++;
-    putchar(memory[PC]);
-    PC = PC - 2;
-    putchar(memory[PC]);
-    PC--;
-    memory[PC]--;
-    putchar(memory[PC]);
+    PC++;memory[PC] = memory[PC] + 9;while(memory[PC]){PC--;memory[PC] = memory[PC] + 8;PC++;memory[PC]--;}PC--;putchar(memory[PC]);PC++;memory[PC] = memory[PC] + 7;while(memory[PC]){PC--;memory[PC] = memory[PC] + 4;PC++;memory[PC]--;}PC--;memory[PC]++;putchar(memory[PC]);memory[PC] = memory[PC] + 7;putchar(memory[PC]);putchar(memory[PC]);memory[PC] = memory[PC] + 3;putchar(memory[PC]);while(memory[PC]){memory[PC]--;}PC++;memory[PC] = memory[PC] + 8;while(memory[PC]){PC--;memory[PC] = memory[PC] + 4;PC++;memory[PC]--;}PC--;putchar(memory[PC]);PC++;memory[PC] = memory[PC] + 11;while(memory[PC]){PC--;memory[PC] = memory[PC] + 8;PC++;memory[PC]--;}PC--;memory[PC]--;putchar(memory[PC]);memory[PC] = memory[PC] - 8;putchar(memory[PC]);memory[PC] = memory[PC] + 3;putchar(memory[PC]);memory[PC] = memory[PC] - 6;putchar(memory[PC]);memory[PC] = memory[PC] - 8;putchar(memory[PC]);while(memory[PC]){memory[PC]--;}PC++;memory[PC] = memory[PC] + 8;while(memory[PC]){PC--;memory[PC] = memory[PC] + 4;PC++;memory[PC]--;}PC--;memory[PC]++;putchar(memory[PC]);while(memory[PC]){memory[PC]--;}memory[PC] = memory[PC] + 10;putchar(memory[PC]);
 
 }

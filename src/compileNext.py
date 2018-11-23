@@ -4,9 +4,6 @@
 
 import sys
 
-gotoCounter = 0
-gotoStack = []
-
 def tokenize(source):
 	previousSymbol = source[0]
 	patternLength = 0
@@ -45,32 +42,20 @@ def action_decrementCell(token):
 	return 'memory[PC] = memory[PC] - ' + str(token[1]) + ';'
 
 def action_putchar(token):
-	if token[1] == 1:
-		return 'putchar(memory[PC]);'
 	return 'putchar(memory[PC]);' * token[1]
 
 def action_getchar(token):
-	if token[1] == 1:
-		return 'getchar(memory[PC]);'
 	return 'memory[PC] = getchar();' * token[1]
 
 def action_startLoop(token):
-	# good luck
-	global gotoCounter, gotoStack
-
-	gotoCounter = gotoCounter + token[1]
-
-	gotoStack = gotoStack + [gotoCounter - i for i in range(token[1])]
-
-	return ''.join(['\nloop' + str(gotoCounter - i) + ': if(!memory[PC]) goto endloop' + str(gotoCounter - i) + ';' for i in reversed(range(token[1]))])
-
-
+	return 'while(memory[PC]){' * token[1]
 
 def action_endLoop(token):
-	# good luck
-	global gotoCounter, gotoStack
+	return '}' * token[1]
 
-	return ''.join(['endloop' + str(gotoStack[-1]) + ': if(memory[PC]) goto loop' + str(gotoStack.pop()) + ';\n' for i in reversed(range(token[1]))])
+def formatSource(source):
+	pass
+
 
 actions = { '>': action_moveRight, 
 			'<': action_moveLeft,
@@ -105,7 +90,9 @@ int main() {
 }
 
 void execute() {
-int PC = 0;
+    
+    int PC = 0;
+    
 """
 
 if __name__ == '__main__':
@@ -120,7 +107,7 @@ if __name__ == '__main__':
 	for token in tokens:
 		actionTree.append(actions[token[0]](token))
 
-	bfSource = '\n    '.join(['\nmain:'] + actionTree)
+	bfSource = '    ' + ''.join(actionTree)
 
 	open(sys.argv[2], 'w').write(cBootstrapString + bfSource + '\n\n}')
 
