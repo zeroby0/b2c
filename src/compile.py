@@ -74,7 +74,6 @@ cBootstrapString = """\
 #include <stdlib.h>
 
 #define MAX_PROG_MEMORY 30000 // 30000 arrays available for manipulation
-// Global variable so that we end up in heap instead of stack.
 
 void execute();
 
